@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Hero Section</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #fff; /* Change text color to white for contrast */
+            transition: background 1s; /* Smooth transition for background color */
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-top: 150px;
+            opacity: 0;
+            transform: translateY(-20px);
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+        }
+
+        .hero-description {
+            font-size: 2rem;
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(-20px);
+            letter-spacing: 2px;
+        }
+
+        .hero-images {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .image-item {
+            width: 400px; /* Increased image size */
+            height: auto; /* Maintain aspect ratio */
+            margin: 0 10px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 1; /* Initially visible */
+            filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)); /* Add shadow effect */
+        }
+
+        /* Hover effect styles */
+        .image-item:hover {
+            transform: scale(1.05); /* Slightly enlarge the image */
+            transition: transform 0.2s ease;
+        }
+
+        .vector-effect {
+            filter: grayscale(100%) contrast(0%); /* Vector-like effect */
+            transition: filter 0.3s ease;
+        }
+
+        .image-item:not(:hover) {
+            opacity: 0.6; /* Dim non-hovered images */
+        }
+
+        .pha5e-header {
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 6rem; /* Increased font size for PHA5E */
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .discover-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: #ff5c00; /* Button color */
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .discover-button:hover {
+            background-color: #e24e00; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+    <header class="hero-section">
+        <div class="pha5e-header">PHA5E</div> <!-- PHA5E Header -->
+        <div class="container">
+            <h1 class="hero-title">Your Creative Journey Starts Here</h1>
+            <div class="hero-images">
+                <img src="https://2022-pha5e-website-prod.s3.eu-west-3.amazonaws.com/assets/bigger-science_thumbnail.png" alt="Image 1" class="image-item image-1">
+                <img src="https://2022-pha5e-website-prod.s3.eu-west-3.amazonaws.com/assets/Capture-d%C3%A2e%C3%8Ccran-2023-04-03-a%C3%8C-10.59.43_2-2.jpg" alt="Image 2" class="image-item image-2">
+                <img src="https://2022-pha5e-website-prod.s3.eu-west-3.amazonaws.com/assets/Capture%20da%C3%8CeI%C3%8Ccran%202024-01-04%20aI%C3%8C%2016.41.06-2.png" alt="Image 3" class="image-item image-3">
+            </div>
+            <p class="hero-description">Explore the world of creativity and innovation.</p>
+            <a href="https://www.pha5e.com/" target="_blank">
+                <button class="discover-button">Discover More</button>
+            </a>
+        </div>
+    </header>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const heroTitle = document.querySelector(".hero-title");
+            const heroDescription = document.querySelector(".hero-description");
+            const heroImages = document.querySelectorAll(".image-item");
+
+            // Initial animation
+            gsap.to(heroTitle, { opacity: 1, y: 0, duration: 1, delay: 0.5 });
+            gsap.to(heroDescription, { opacity: 1, y: 0, duration: 1, delay: 1 });
+
+            // Background color change
+const colors = [
+    '#808080', // Gray
+    '#F16A3A', // Sunset Orange
+    '#3A5B9A', // Dark Sky Blue
+    '#E3A6A1', // Light Coral
+    '#4C5B6D', // Slate Blue
+    '#D7D9D9', // Soft Light Gray
+    '#4A4A4A', // Dark Gray
+    '#B3B3B3', // Light Gray
+    '#192734', // Dark Blue-Gray
+    '#FFBF00', // Amber
+    '#6D6A77', // Slate Gray
+    '#FFCCCB', // Light Red
+    '#212121', // Charcoal
+    '#161618', // Dark Gray
+    '#15292B', // Dark Teal
+    '#181818', // Very Dark Gray
+    '#4C8D85', // Teal
+    '#FFE4B5', // Light Goldenrod
+    '#FFB6C1', // Light Pink
+    '#2E3B4E', // Dark Slate Blue
+    '#192734', // Dark Blue-Gray
+];
+
+            let currentColor = 0;
+
+            function changeBackgroundColor() {
+                document.body.style.backgroundColor = colors[currentColor];
+                currentColor = (currentColor + 1) % colors.length;
+            }
+
+            setInterval(changeBackgroundColor, 3000); // Change color every 3 seconds
+
+            // Adding mouse movement effect
+            heroImages.forEach(image => {
+                image.addEventListener("mouseenter", function() {
+                    // Remove vector effect from the hovered image
+                    this.classList.remove('vector-effect');
+                    heroImages.forEach(img => {
+                        if (img !== this) {
+                            img.classList.add('vector-effect');
+                        }
+                    });
+                });
+
+                image.addEventListener("mouseleave", function() {
+                    // Restore vector effect
+                    heroImages.forEach(img => {
+                        img.classList.remove('vector-effect');
+                    });
+                });
+
+                // Mouse movement effect
+                image.addEventListener("mousemove", function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const moveX = (x / rect.width - 0.5) * 30; // Adjusts the movement intensity
+                    const moveY = (y / rect.height - 0.5) * 30; // Adjusts the movement intensity
+                    this.style.transform = `translate(${moveX}px, ${moveY}px)`; 
+                });
+
+                image.addEventListener("mouseout", function() {
+                    this.style.transform = 'translate(0, 0)'; // Reset position on mouse out
+                });
+            });
+        });
+    </script>
+</body>
+</html>
