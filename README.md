@@ -27,7 +27,7 @@ const colors = [
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/creative-hero-section.git
+   git clone https://github.com/jatinraj2407/Hero.io.git
    ```
 2. Open `index.html` in your web browser.
 
